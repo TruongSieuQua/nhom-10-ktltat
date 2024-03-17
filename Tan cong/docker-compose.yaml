@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - mongodb:/data/db
+    network_mode: host
+          
+  frontend:
+    image: frontend:v1
+    container_name: frontend
+    ports:
+      - 3000:3000
+    network_mode: host
+  
+  backend:
+    image: backend:v1
+    container_name: backend
+    ports:
+      - 3060:3060
+    depends_on:
+      - mongodb
+    network_mode: host
+
+volumes:
+  mongodb:
+

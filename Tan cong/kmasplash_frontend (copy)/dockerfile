@@ -1,0 +1,12 @@
+FROM alpine:3.19
+  
+RUN apk add --update nodejs npm
+RUN npm install -g serve
+RUN mkdir -p /var/www/unsplash-frontend
+
+WORKDIR /var/www/
+EXPOSE 3000
+
+ADD ./build /var/www/unsplash-frontend/build
+
+CMD ["serve", "/var/www/unsplash-frontend/build", "-l", "3000"]

@@ -1,0 +1,18 @@
+FROM alpine:3.19
+  
+RUN apk add --update nodejs npm
+
+ARG NODE_ENV=production
+
+WORKDIR /usr/src/app
+EXPOSE 3060
+
+COPY package*.json ./
+
+RUN npm install --only=production
+
+RUN rm package*.json
+
+COPY ./dist /usr/src/app/dist
+
+CMD ["node", "./dist/main.js"]
