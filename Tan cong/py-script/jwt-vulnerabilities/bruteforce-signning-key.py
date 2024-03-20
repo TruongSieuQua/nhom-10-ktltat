@@ -1,7 +1,16 @@
-from jwt import JWT
+import jwt
 
+encoded_jwt = jwt.encode({
+  "email": "jjjokerman@gmail.com",
+  "iat": 1710682623,
+  "exp": 1713274623
+}, "", algorithms=None)
 
-jwtInstance = JWT()
-token = ''
+print(encoded_jwt)
 
-decoded_token = JWT.decode(token)
+# import jwt
+# key = "secret"
+# encoded = jwt.encode({"some": "payload"}, key, algorithm="HS256")
+# print(encoded)
+# decode = jwt.decode(encoded, key, algorithms="HS256")
+# print(decode)

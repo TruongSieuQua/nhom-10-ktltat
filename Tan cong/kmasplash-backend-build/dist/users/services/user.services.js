@@ -72,10 +72,6 @@ let UserService = class UserService {
     }
     async updateProfile(body, userId) {
         const user = await this.userRepository.findById(userId);
-        const hasPermission = user._id.toString() === userId.toString();
-        if (!hasPermission) {
-            throw new common_1.HttpException('No Permission', common_1.HttpStatus.FORBIDDEN);
-        }
         if (!user) {
             throw new common_1.HttpException('User not found', common_1.HttpStatus.NOT_FOUND);
         }
