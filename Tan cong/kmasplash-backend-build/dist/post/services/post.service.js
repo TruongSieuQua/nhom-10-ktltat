@@ -29,13 +29,9 @@ let PostServices = class PostServices {
             }, {
                 posts: 0,
             });
-            const count = await this.postRepository.countDocuments({
-                categories: _category[0]._id,
-            });
+            const count = await this.postRepository.countDocuments({});
             const totalPage = (count / limit).toFixed();
-            const posts = await this.postRepository.getByCondition({
-                categories: _category[0]._id,
-            }, null, {
+            const posts = await this.postRepository.getByCondition({}, null, {
                 skip: (+page - 1) * +limit,
                 limit: +limit,
             }, [

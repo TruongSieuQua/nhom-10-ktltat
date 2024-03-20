@@ -29,7 +29,6 @@ let UserController = class UserController {
         return await this.userService.findUserById(id);
     }
     async updateProfile(body, req) {
-        console.log('req', req.body);
         const _userId = req.body.userId;
         return await this.userService.updateProfile(body, _userId);
     }

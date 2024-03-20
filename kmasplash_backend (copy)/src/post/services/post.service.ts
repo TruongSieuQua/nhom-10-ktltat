@@ -33,12 +33,12 @@ export class PostServices {
         },
       );
       const count = await this.postRepository.countDocuments({
-        categories: _category[0]._id,
+        // categories: _category[0]._id,
       });
       const totalPage = (count / limit).toFixed();
       const posts = await this.postRepository.getByCondition(
         {
-          categories: _category[0]._id,
+          // categories: _category[0]._id,
         },
         null,
         {
